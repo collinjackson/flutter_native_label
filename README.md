@@ -1,6 +1,6 @@
 # flutter_native_label
 
-Flutter plugin wrapping `UILabel` on iOS.
+Flutter plugin wrapping `UILabel` on iOS. This is a workaround for flutter/flutter#28894.
 
 Other platforms are not supported.
 
