@@ -1,13 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
-class NativeLabel extends StatelessWidget {
-  const NativeLabel(this.text, {
-    this.decoration,
-    this.style,
-    Key? key
-  }) : super(key: key);
-
+class NativeLabel extends StatefulWidget {
   /// The text content of the label.
   final String text;
 
@@ -23,31 +17,41 @@ class NativeLabel extends StatelessWidget {
   /// Default: null
   final TextStyle? style;
 
-  static const viewType = 'flutter_native_label';
+  const NativeLabel(this.text, {
+    this.decoration,
+    this.style,
+    Key? key
+  }) : super(key: key);
 
+  @override
+  NativeLabelState createState() => NativeLabelState();
+}
+
+class NativeLabelState extends State<NativeLabel> {
   @override
   Widget build(BuildContext context) {
     final textScaleFactor = MediaQuery.of(context).textScaleFactor;
     return LayoutBuilder(
       builder: (context, constraints) => Container(
-        decoration: decoration,
+        decoration: widget.decoration,
         child: UiKitView(
-          viewType: NativeLabel.viewType,
+          key: ValueKey([textScaleFactor, widget.text].join()),
+          viewType: 'flutter_native_label',
           creationParamsCodec: const StandardMessageCodec(),
           creationParams: {
-            "text": text,
+            "text": widget.text,
             "width": constraints.maxWidth,
             "textScaleFactor": textScaleFactor,
-            if (style != null && style?.fontSize != null)
-              "fontSize": style!.fontSize,
-            if (style != null && style?.fontWeight != null)
-              "fontWeight": style!.fontWeight,
-            if (style != null && style?.fontWeight != null)
+            if (widget.style != null && widget.style?.fontSize != null)
+              "fontSize": widget.style!.fontSize,
+            if (widget.style != null && widget.style?.fontWeight != null)
+              "fontWeight": widget.style!.fontWeight,
+            if (widget.style != null && widget.style?.fontWeight != null)
               "fontColor": {
-                "red": style?.color?.red,
-                "green": style?.color?.green,
-                "blue": style?.color?.blue,
-                "alpha": style?.color?.alpha,
+                "red": widget.style?.color?.red,
+                "green": widget.style?.color?.green,
+                "blue": widget.style?.color?.blue,
+                "alpha": widget.style?.color?.alpha,
               },
           },
         ),

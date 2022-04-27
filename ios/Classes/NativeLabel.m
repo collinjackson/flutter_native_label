@@ -27,12 +27,14 @@
         _label.backgroundColor = UIColor.clearColor;
         _label.lineBreakMode = NSLineBreakByWordWrapping;
         _label.numberOfLines = 0;
-        
+
+        float fontSize = 16.0;
         if (args[@"fontSize"] && ![args[@"fontSize"] isKindOfClass:[NSNull class]]) {
-            float fontSize = [args[@"fontSize"] floatValue];
-            float fontWeight = [args[@"@fontWeight"] floatValue];
-            _label.font = [UIFont systemFontOfSize:fontSize weight:fontWeight];
+            fontSize = [args[@"fontSize"] floatValue];
         }
+        float fontWeight = [args[@"@fontWeight"] floatValue];
+        float scaleFactor = [args[@"textScaleFactor"] floatValue];
+        _label.font = [UIFont systemFontOfSize:fontSize * scaleFactor weight:fontWeight];
         if (args[@"fontColor"] && ![args[@"fontColor"] isKindOfClass:[NSNull class]]) {
             NSDictionary* fontColor = args[@"fontColor"];
             UIColor *textColor = [UIColor colorWithRed:[fontColor[@"red"] floatValue]/255.0 green:[fontColor[@"green"] floatValue]/255.0 blue:[fontColor[@"blue"] floatValue]/255.0 alpha:[fontColor[@"alpha"] floatValue]/255.0];
@@ -52,8 +54,16 @@
 }
 
 - (void)onMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-    result(FlutterMethodNotImplemented);
+    if ([[call method] isEqualToString:@"getContentHeight"]) {
+        CGSize boundSize = CGSizeMake(_containerWidth, MAXFLOAT);
+        CGSize size = [_label sizeThatFits: boundSize];
+        result([NSNumber numberWithFloat: size.height]);
+    } else {
+        result(FlutterMethodNotImplemented);
+    }
 }
+
+
 
 - (UIView*)view {
     return _label;
