@@ -25,6 +25,20 @@
 
         _label = [[UILabel alloc] initWithFrame:frame];
         _label.backgroundColor = UIColor.clearColor;
+        _label.lineBreakMode = NSLineBreakByWordWrapping;
+        _label.numberOfLines = 0;
+        
+        if (args[@"fontSize"] && ![args[@"fontSize"] isKindOfClass:[NSNull class]]) {
+            float fontSize = [args[@"fontSize"] floatValue];
+            float fontWeight = [args[@"@fontWeight"] floatValue];
+            _label.font = [UIFont systemFontOfSize:fontSize weight:fontWeight];
+        }
+        if (args[@"fontColor"] && ![args[@"fontColor"] isKindOfClass:[NSNull class]]) {
+            NSDictionary* fontColor = args[@"fontColor"];
+            UIColor *textColor = [UIColor colorWithRed:[fontColor[@"red"] floatValue]/255.0 green:[fontColor[@"green"] floatValue]/255.0 blue:[fontColor[@"blue"] floatValue]/255.0 alpha:[fontColor[@"alpha"] floatValue]/255.0];
+            _label.textColor = textColor;
+        }
+
         _label.text = args[@"text"];
 
         _containerWidth = [args[@"width"] floatValue];
