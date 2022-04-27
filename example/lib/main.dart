@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         body: ListView.builder(
           itemBuilder: (_, index) {
             return SizedBox(
-              height: 20,
+              height: 100,
               child: NativeLabel(
                 'Demo 👍👍👍👍 👍👍👍👍 Multiline 👍👍👍😊😊😊 👍👍👍 $index 👍👍\n',
               ),
