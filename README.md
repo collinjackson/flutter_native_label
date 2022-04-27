@@ -17,6 +17,8 @@ Other platforms are not supported.
         Flexible(child: NativeLabel('Native Label 😊\n')),
       ],
     );
+
   }
 ```
-<img width="506" alt="Screen Shot 2022-04-27 at 7 43 19 AM" src="https://user-images.githubusercontent.com/394889/165546064-57595e88-1bb4-471d-bebb-73744aa35058.png">
+
+<video src="https://user-images.githubusercontent.com/394889/165560585-6112a48e-65bb-4357-9541-456cd137ed62.mov">
