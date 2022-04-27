@@ -7,17 +7,21 @@ Other platforms are not supported.
 ## Example Usage
 
 ```dart
-  ...
   ListView.builder(
+    padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
     itemBuilder: (_, index) {
-      return SizedBox(
-        height: 100,
+      return Container(
+        margin: EdgeInsets.all(8.0),
         child: NativeLabel(
-          'Demo 👍👍👍👍 👍👍👍👍 Multiline 👍👍👍😊😊😊 👍👍👍 $index 👍👍\n',
+          '''Demo 👍👍👍👍 👍👍👍👍 Multiline 👍👍👍😊😊😊 👍👍👍 '''
+          '$index ${List.filled(index, '👍').join()}\n',
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15.0),
+          color: Colors.white,
         ),
-      );
-    },
-  }
+      ),
+    );
+  },
 ```
 
-<video src="https://user-images.githubusercontent.com/394889/165560585-6112a48e-65bb-4357-9541-456cd137ed62.mov">
+<video src="https://user-images.githubusercontent.com/394889/165588110-15dbaca8-8d92-466a-8416-fa05e560732b.mov">
