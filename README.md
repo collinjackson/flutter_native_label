@@ -7,17 +7,16 @@ Other platforms are not supported.
 ## Example Usage
 
 ```dart
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: const [
-        Text('Flutter Text 😊\n'),
-        Flexible(child: NativeLabel('Native Label 😊\n')),
-      ],
-    );
-
+  ...
+  ListView.builder(
+    itemBuilder: (_, index) {
+      return SizedBox(
+        height: 100,
+        child: NativeLabel(
+          'Demo 👍👍👍👍 👍👍👍👍 Multiline 👍👍👍😊😊😊 👍👍👍 $index 👍👍\n',
+        ),
+      );
+    },
   }
 ```
 
