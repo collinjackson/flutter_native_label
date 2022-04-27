@@ -28,12 +28,27 @@ class NativeLabel extends StatefulWidget {
 }
 
 class NativeLabelState extends State<NativeLabel> {
+  double _contentHeight = 16.0;
+
+  void _createMethodChannel(int nativeViewId) {
+    MethodChannel channel =
+        MethodChannel("flutter_native_label$nativeViewId");
+    channel.invokeMethod("getContentHeight").then((value) {
+      if (value != null) {
+        setState(() {
+          _contentHeight = value;
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final textScaleFactor = MediaQuery.of(context).textScaleFactor;
     return LayoutBuilder(
       builder: (context, constraints) => Container(
         decoration: widget.decoration,
+        height: _contentHeight,
         child: UiKitView(
           key: ValueKey([textScaleFactor, widget.text].join()),
           viewType: 'flutter_native_label',
@@ -54,6 +69,7 @@ class NativeLabelState extends State<NativeLabel> {
                 "alpha": widget.style?.color?.alpha,
               },
           },
+          onPlatformViewCreated: _createMethodChannel,
         ),
       ),
     );

@@ -14,17 +14,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.dark(),
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
         body: ListView.builder(
+          padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
           itemBuilder: (_, index) {
-            return SizedBox(
-              height: 100,
+            return Container(margin: EdgeInsets.all(8.0),
               child: NativeLabel(
-                'Demo 👍👍👍👍 👍👍👍👍 Multiline 👍👍👍😊😊😊 👍👍👍 $index 👍👍\n',
+              '''Demo 👍👍👍👍 👍👍👍👍 Multiline 👍👍👍😊😊😊 👍👍👍 '''
+                  '$index ${List.filled(index, '👍').join()}\n',
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                color: Colors.white,
               ),
+            ),
             );
           },
         ),
