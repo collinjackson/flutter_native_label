@@ -18,13 +18,15 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: const [
-            Text('Flutter Text 😊\n'),
-            Flexible(child: NativeLabel('Native Label 😊\n')),
-          ],
+        body: ListView.builder(
+          itemBuilder: (_, index) {
+            return SizedBox(
+              height: 20,
+              child: NativeLabel(
+                'Demo 👍👍👍👍 👍👍👍👍 Multiline 👍👍👍😊😊😊 👍👍👍 $index 👍👍\n',
+              ),
+            );
+          },
         ),
       ),
     );
