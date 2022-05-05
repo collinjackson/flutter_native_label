@@ -1,5 +1,7 @@
 # flutter_native_label
 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=T95X77SLUMNBY)
+
 Flutter plugin wrapping `UILabel` on iOS. This is a workaround for flutter/flutter#28894.
 
 Other platforms are not supported.
