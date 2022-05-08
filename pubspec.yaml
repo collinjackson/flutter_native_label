@@ -1,5 +1,5 @@
 name: flutter_native_label
-description: A new flutter plugin project.
+description: Flutter plugin wrapping UILabel on iOS
 version: 0.0.1
 homepage:
 
