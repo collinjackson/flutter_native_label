@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_native_label/flutter_native_label.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('flutter_native_label');
@@ -17,7 +16,4 @@ void main() {
     channel.setMockMethodCallHandler(null);
   });
 
-  test('getPlatformVersion', () async {
-    expect(await FlutterNativeLabel.platformVersion, '42');
-  });
 }
