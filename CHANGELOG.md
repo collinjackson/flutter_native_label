@@ -2,6 +2,7 @@
 
 * Update example.
 * Formatting fixes.
+* Analyzer fixes.
 
 ## 0.0.1
 
