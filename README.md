@@ -27,4 +27,7 @@ Other platforms are not supported.
   },
 ```
 
-<video src="https://user-images.githubusercontent.com/394889/165588110-15dbaca8-8d92-466a-8416-fa05e560732b.mov">
+## Video
+
+https://user-images.githubusercontent.com/394889/167315114-f827f166-f318-416c-81cb-14952863d11d.mov
+
