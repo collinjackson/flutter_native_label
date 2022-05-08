@@ -10,22 +10,28 @@ class NativeLabel extends StatefulWidget {
   /// Default: null
   final BoxDecoration? decoration;
 
-  /// The style to use for the text being edited
+  /// Sets the style of the text being edited.
   ///
   /// Only `fontSize`, `fontWeight`, and `color` are supported.
   ///
   /// Default: null
   final TextStyle? style;
 
-  /// Used to set spacing of the text
+  /// Sets the spacing between characters of the text.
   ///
   /// Default: null
   final double? kern;
+
+  /// Sets the spacing between lines of text.
+  ///
+  /// Default: null
+  final double? lineSpacing;
 
   const NativeLabel(this.text, {
     this.decoration,
     this.style,
     this.kern,
+    this.lineSpacing,
     Key? key
   }) : super(key: key);
 
@@ -76,6 +82,8 @@ class NativeLabelState extends State<NativeLabel> {
               },
             if (widget.kern != null)
               "kern": widget.kern,
+            if (widget.lineSpacing != null)
+              "lineSpacing": widget.lineSpacing,
           },
           onPlatformViewCreated: _createMethodChannel,
         ),

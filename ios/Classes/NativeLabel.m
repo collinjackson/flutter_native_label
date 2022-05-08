@@ -44,6 +44,13 @@
             UIColor *textColor = [UIColor colorWithRed:[fontColor[@"red"] floatValue]/255.0 green:[fontColor[@"green"] floatValue]/255.0 blue:[fontColor[@"blue"] floatValue]/255.0 alpha:[fontColor[@"alpha"] floatValue]/255.0];
             _label.textColor = textColor;
         }
+
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        if (args["lineSpacing"] && ![args[@"lineSpacing"] isKindOfClass:[NSNull class]]) {
+            paragraphStyle.lineSpacing = [args["lineSpacing"] floatValue];
+        }
+        _label.paragraphStyle = paragraphStyle;
+
         NSString *text = args["text"];
         NSMutableAttributedString *attributedText =
             [[NSMutableAttributedString alloc] initWithString:text];
