@@ -1,9 +1,10 @@
 #import "NativeLabel.h"
 
-@interface PaddingLabel: UILabel {
-}
+@interface UILabelWithInsets : UILabel
+- (void) setContentEdgeInsets:(UIEdgeInsets)edgeInsets;
+@end
 
-@implementation PaddingLabel() {
+@implementation UILabelWithInsets {
     float topInset, leftInset, bottomInset, rightInset;
 }
 
@@ -29,7 +30,7 @@
 @end
 
 @implementation NativeLabel {
-    UILabel* _label;
+    UILabelWithInsets* _label;
     
     int64_t _viewId;
     FlutterMethodChannel* _channel;
@@ -51,7 +52,7 @@
         _viewId = viewId;
         _args = args;
 
-        _label = [[UILabel alloc] initWithFrame:frame];
+        _label = [[UILabelWithInsets alloc] initWithFrame:frame];
         _label.backgroundColor = UIColor.clearColor;
         _label.lineBreakMode = NSLineBreakByWordWrapping;
         _label.numberOfLines = 0;
@@ -73,15 +74,17 @@
             _label.textColor = textColor;
         }
 
-        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        if (args[@"lineSpacing"] && ![args[@"lineSpacing"] isKindOfClass:[NSNull class]]) {
-            paragraphStyle.lineSpacing = [args[@"lineSpacing"] floatValue];
-        }
-        _label.paragraphStyle = paragraphStyle;
-
         NSString *text = args[@"text"];
         NSMutableAttributedString *attributedText =
             [[NSMutableAttributedString alloc] initWithString:text];
+
+        if (args[@"lineSpacing"] && ![args[@"lineSpacing"] isKindOfClass:[NSNull class]]) {
+            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+            paragraphStyle.lineSpacing = [args[@"lineSpacing"] floatValue];
+            [attributedText addAttribute:NSParagraphStyleAttributeName
+                                   value:paragraphStyle
+                                   range:NSMakeRange(0, [text length])];
+        }
 
         if (args[@"kern"] && ![args[@"kern"] isKindOfClass:[NSNull class]]) {
             [attributedText addAttribute:NSKernAttributeName
@@ -105,7 +108,7 @@
         if (args[@"edgeInsetRight"] && ![args[@"edgeInsetRight"] isKindOfClass:[NSNull class]]) {
             edgeInsetRight = [args[@"edgeInsetRight"] floatValue];
         }
-        _label.edgeInsets = UIEdgeInsetsMake(edgeInsetTop, edgeInsetLeft, edgeInsetBottom, edgeInsetRight);
+        [_label setContentEdgeInsets:UIEdgeInsetsMake(edgeInsetTop, edgeInsetLeft, edgeInsetBottom, edgeInsetRight)];
 
         _label.attributedText = attributedText;
 
