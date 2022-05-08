@@ -30,6 +30,12 @@ class MyApp extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15.0),
                 color: Colors.white,
               ),
+                edgeInsetTop: 10.0,
+                edgeInsetLeft: 10.0,
+                edgeInsetBottom: 10.0,
+                edgeInsetRight: 10.0,
+                lineSpacing: 20.0,
+                kern: 20.0,
             ),
             );
           },
