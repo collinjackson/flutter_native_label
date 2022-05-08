@@ -68,8 +68,8 @@ class NativeLabelState extends State<NativeLabel> {
 
   void _createMethodChannel(int nativeViewId) {
     MethodChannel channel =
-        MethodChannel("flutter_native_label$nativeViewId");
-    channel.invokeMethod("getContentHeight").then((value) {
+        MethodChannel('flutter_native_label$nativeViewId');
+    channel.invokeMethod('getContentHeight').then((value) {
       if (value != null) {
         setState(() {
           _contentHeight = value;
@@ -90,24 +90,28 @@ class NativeLabelState extends State<NativeLabel> {
           viewType: 'flutter_native_label',
           creationParamsCodec: const StandardMessageCodec(),
           creationParams: {
-            "text": widget.text,
-            "width": constraints.maxWidth,
-            "textScaleFactor": textScaleFactor,
+            'text': widget.text,
+            'width': constraints.maxWidth,
+            'textScaleFactor': textScaleFactor,
             if (widget.style != null && widget.style?.fontSize != null)
-              "fontSize": widget.style!.fontSize,
+              'fontSize': widget.style!.fontSize,
             if (widget.style != null && widget.style?.fontWeight != null)
-              "fontWeight": widget.style!.fontWeight,
+              'fontWeight': widget.style!.fontWeight,
             if (widget.style != null && widget.style?.fontWeight != null)
-              "fontColor": {
-                "red": widget.style?.color?.red,
-                "green": widget.style?.color?.green,
-                "blue": widget.style?.color?.blue,
-                "alpha": widget.style?.color?.alpha,
+              'fontColor': {
+                'red': widget.style?.color?.red,
+                'green': widget.style?.color?.green,
+                'blue': widget.style?.color?.blue,
+                'alpha': widget.style?.color?.alpha,
               },
             if (widget.kern != null)
-              "kern": widget.kern,
+              'kern': widget.kern,
             if (widget.lineSpacing != null)
-              "lineSpacing": widget.lineSpacing,
+              'lineSpacing': widget.lineSpacing,
+            'edgeInsetTop': widget.edgeInsetTop,
+            'edgeInsetLeft': widget.edgeInsetLeft,
+            'edgeInsetBottom': widget.edgeInsetBottom,
+            'edgeInsetRight': widget.edgeInsetRight,
           },
           onPlatformViewCreated: _createMethodChannel,
         ),
