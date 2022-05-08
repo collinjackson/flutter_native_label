@@ -47,17 +47,17 @@ class NativeLabel extends StatefulWidget {
   /// Default: 0.0
   final double edgeInsetRight;
 
-  const NativeLabel(this.text, {
-    this.decoration,
-    this.style,
-    this.kern,
-    this.lineSpacing,
-    this.edgeInsetTop = 0.0,
-    this.edgeInsetBottom = 0.0,
-    this.edgeInsetLeft = 0.0,
-    this.edgeInsetRight = 0.0,
-    Key? key
-  }) : super(key: key);
+  const NativeLabel(this.text,
+      {this.decoration,
+      this.style,
+      this.kern,
+      this.lineSpacing,
+      this.edgeInsetTop = 0.0,
+      this.edgeInsetBottom = 0.0,
+      this.edgeInsetLeft = 0.0,
+      this.edgeInsetRight = 0.0,
+      Key? key})
+      : super(key: key);
 
   @override
   NativeLabelState createState() => NativeLabelState();
@@ -67,8 +67,7 @@ class NativeLabelState extends State<NativeLabel> {
   double _contentHeight = 16.0;
 
   void _createMethodChannel(int nativeViewId) {
-    MethodChannel channel =
-        MethodChannel('flutter_native_label$nativeViewId');
+    MethodChannel channel = MethodChannel('flutter_native_label$nativeViewId');
     channel.invokeMethod('getContentHeight').then((value) {
       if (value != null) {
         setState(() {
@@ -104,10 +103,8 @@ class NativeLabelState extends State<NativeLabel> {
                 'blue': widget.style?.color?.blue,
                 'alpha': widget.style?.color?.alpha,
               },
-            if (widget.kern != null)
-              'kern': widget.kern,
-            if (widget.lineSpacing != null)
-              'lineSpacing': widget.lineSpacing,
+            if (widget.kern != null) 'kern': widget.kern,
+            if (widget.lineSpacing != null) 'lineSpacing': widget.lineSpacing,
             'edgeInsetTop': widget.edgeInsetTop,
             'edgeInsetLeft': widget.edgeInsetLeft,
             'edgeInsetBottom': widget.edgeInsetBottom,
