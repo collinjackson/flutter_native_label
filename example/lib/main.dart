@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
                 edgeInsetBottom: 10.0,
                 edgeInsetRight: 10.0,
                 lineSpacing: 20.0,
-                kern: 20.0,
+                kern: 5.0,
             ),
             );
           },
