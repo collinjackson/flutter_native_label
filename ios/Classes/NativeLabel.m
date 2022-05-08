@@ -1,5 +1,33 @@
 #import "NativeLabel.h"
 
+@interface PaddingLabel: UILabel {
+}
+
+@implementation PaddingLabel() {
+    float topInset, leftInset, bottomInset, rightInset;
+}
+
+- (void)drawTextInRect:(CGRect)rect {
+    UIEdgeInsets insets = UIEdgeInsetsMake(topInset, leftInset, bottomInset, rightInset);
+    [super drawTextInRect:UIEdgeInsetsInsetRect(rect, insets)];
+}
+
+- (CGSize) intrinsicContentSize {
+    CGSize intrinsicSuperViewContentSize = [super intrinsicContentSize];
+    intrinsicSuperViewContentSize.height += topInset + bottomInset;
+    intrinsicSuperViewContentSize.width += leftInset + rightInset;
+    return intrinsicSuperViewContentSize;
+}
+
+- (void) setContentEdgeInsets:(UIEdgeInsets)edgeInsets {
+    topInset = edgeInsets.top;
+    leftInset = edgeInsets.left;
+    rightInset = edgeInsets.right;
+    bottomInset = edgeInsets.bottom;
+    [self invalidateIntrinsicContentSize];
+}
+@end
+
 @implementation NativeLabel {
     UILabel* _label;
     
@@ -46,20 +74,38 @@
         }
 
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        if (args["lineSpacing"] && ![args[@"lineSpacing"] isKindOfClass:[NSNull class]]) {
-            paragraphStyle.lineSpacing = [args["lineSpacing"] floatValue];
+        if (args[@"lineSpacing"] && ![args[@"lineSpacing"] isKindOfClass:[NSNull class]]) {
+            paragraphStyle.lineSpacing = [args[@"lineSpacing"] floatValue];
         }
         _label.paragraphStyle = paragraphStyle;
 
-        NSString *text = args["text"];
+        NSString *text = args[@"text"];
         NSMutableAttributedString *attributedText =
             [[NSMutableAttributedString alloc] initWithString:text];
 
         if (args[@"kern"] && ![args[@"kern"] isKindOfClass:[NSNull class]]) {
             [attributedText addAttribute:NSKernAttributeName
-                        value:args["kern"]
+                        value:args[@"kern"]
                         range:NSMakeRange(0, [text length])];
         }
+
+        float edgeInsetTop = 0.0;
+        if (args[@"edgeInsetTop"] && ![args[@"edgeInsetTop"] isKindOfClass:[NSNull class]]) {
+            edgeInsetTop = [args[@"edgeInsetTop"] floatValue];
+        }
+        float edgeInsetBottom = 0.0;
+        if (args[@"edgeInsetBottom"] && ![args[@"edgeInsetBottom"] isKindOfClass:[NSNull class]]) {
+            edgeInsetBottom = [args[@"edgeInsetBottom"] floatValue];
+        }
+        float edgeInsetLeft = 0.0;
+        if (args[@"edgeInsetLeft"] && ![args[@"edgeInsetLeft"] isKindOfClass:[NSNull class]]) {
+            edgeInsetLeft = [args[@"edgeInsetLeft"] floatValue];
+        }
+        float edgeInsetRight = 0.0;
+        if (args[@"edgeInsetRight"] && ![args[@"edgeInsetRight"] isKindOfClass:[NSNull class]]) {
+            edgeInsetRight = [args[@"edgeInsetRight"] floatValue];
+        }
+        _label.edgeInsets = UIEdgeInsetsMake(edgeInsetTop, edgeInsetLeft, edgeInsetBottom, edgeInsetRight);
 
         _label.attributedText = attributedText;
 

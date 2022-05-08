@@ -27,11 +27,35 @@ class NativeLabel extends StatefulWidget {
   /// Default: null
   final double? lineSpacing;
 
+  /// Sets the top edge insets.
+  ///
+  /// Default: 0.0
+  final double edgeInsetTop;
+
+  /// Sets the top edge insets.
+  ///
+  /// Default: 0.0
+  final double edgeInsetBottom;
+
+  /// Sets the top edge insets.
+  ///
+  /// Default: 0.0
+  final double edgeInsetLeft;
+
+  /// Sets the top edge insets.
+  ///
+  /// Default: 0.0
+  final double edgeInsetRight;
+
   const NativeLabel(this.text, {
     this.decoration,
     this.style,
     this.kern,
     this.lineSpacing,
+    this.edgeInsetTop = 0.0,
+    this.edgeInsetBottom = 0.0,
+    this.edgeInsetLeft = 0.0,
+    this.edgeInsetRight = 0.0,
     Key? key
   }) : super(key: key);
 
