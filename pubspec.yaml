@@ -1,7 +1,7 @@
 name: flutter_native_label
 description: Flutter plugin wrapping UILabel on iOS
 version: 0.0.1
-homepage:
+homepage: https://github.com/collinjackson/flutter_native_label/
 
 environment:
   sdk: ">=2.16.0 <3.0.0"
