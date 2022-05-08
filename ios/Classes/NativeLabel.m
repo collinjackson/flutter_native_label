@@ -44,8 +44,17 @@
             UIColor *textColor = [UIColor colorWithRed:[fontColor[@"red"] floatValue]/255.0 green:[fontColor[@"green"] floatValue]/255.0 blue:[fontColor[@"blue"] floatValue]/255.0 alpha:[fontColor[@"alpha"] floatValue]/255.0];
             _label.textColor = textColor;
         }
+        NSString *text = args["text"];
+        NSMutableAttributedString *attributedText =
+            [[NSMutableAttributedString alloc] initWithString:text];
 
-        _label.text = args[@"text"];
+        if (args[@"kern"] && ![args[@"kern"] isKindOfClass:[NSNull class]]) {
+            [attributedText addAttribute:NSKernAttributeName
+                        value:args["kern"]
+                        range:NSMakeRange(0, [text length])];
+        }
+
+        _label.attributedText = attributedText;
 
         _containerWidth = [args[@"width"] floatValue];
         

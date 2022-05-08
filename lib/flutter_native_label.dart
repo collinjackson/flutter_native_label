@@ -17,9 +17,15 @@ class NativeLabel extends StatefulWidget {
   /// Default: null
   final TextStyle? style;
 
+  /// Used to set spacing of the text
+  ///
+  /// Default: null
+  final double? kern;
+
   const NativeLabel(this.text, {
     this.decoration,
     this.style,
+    this.kern,
     Key? key
   }) : super(key: key);
 
@@ -68,6 +74,8 @@ class NativeLabelState extends State<NativeLabel> {
                 "blue": widget.style?.color?.blue,
                 "alpha": widget.style?.color?.alpha,
               },
+            if (widget.kern != null)
+              "kern": widget.kern,
           },
           onPlatformViewCreated: _createMethodChannel,
         ),
