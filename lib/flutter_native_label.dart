@@ -47,6 +47,11 @@ class NativeLabel extends StatefulWidget {
   /// Default: 0.0
   final double edgeInsetRight;
 
+  /// Whether user can use a long press gesture to copy.
+  ///
+  /// Default: false
+  final bool copyable;
+
   const NativeLabel(this.text,
       {this.decoration,
       this.style,
@@ -56,6 +61,7 @@ class NativeLabel extends StatefulWidget {
       this.edgeInsetBottom = 0.0,
       this.edgeInsetLeft = 0.0,
       this.edgeInsetRight = 0.0,
+      this.copyable = false,
       Key? key})
       : super(key: key);
 
@@ -109,6 +115,7 @@ class NativeLabelState extends State<NativeLabel> {
             'edgeInsetLeft': widget.edgeInsetLeft,
             'edgeInsetBottom': widget.edgeInsetBottom,
             'edgeInsetRight': widget.edgeInsetRight,
+            'copyable': widget.copyable,
           },
           onPlatformViewCreated: _createMethodChannel,
         ),
