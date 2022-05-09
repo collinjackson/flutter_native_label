@@ -35,5 +35,4 @@ Other platforms are not supported.
 
 ## Video
 
-https://user-images.githubusercontent.com/394889/167315114-f827f166-f318-416c-81cb-14952863d11d.mov
-
+https://user-images.githubusercontent.com/394889/167484748-bc01b3dd-fce5-45d1-9d1f-e7521bfd9a4b.mov
