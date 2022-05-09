@@ -1,5 +1,8 @@
 # flutter_native_label
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=T95X77SLUMNBY)
+
 Flutter plugin wrapping `UILabel` on iOS. This is a workaround for flutter/flutter#28894.
 
 Other platforms are not supported.
@@ -30,4 +33,7 @@ Other platforms are not supported.
   },
 ```
 
-<video src="https://user-images.githubusercontent.com/394889/165588110-15dbaca8-8d92-466a-8416-fa05e560732b.mov">
+## Video
+
+https://user-images.githubusercontent.com/394889/167315114-f827f166-f318-416c-81cb-14952863d11d.mov
+
