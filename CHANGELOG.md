@@ -1,3 +1,7 @@
+## 0.0.2
+
+* Implement copying.
+
 ## 0.0.1+1
 
 * Update example.
