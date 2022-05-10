@@ -102,7 +102,7 @@ class NativeLabelState extends State<NativeLabel> {
               'fontSize': widget.style!.fontSize,
             if (widget.style != null && widget.style?.fontWeight != null)
               'fontWeight': widget.style!.fontWeight,
-            if (widget.style != null && widget.style?.fontWeight != null)
+            if (widget.style != null && widget.style?.color != null)
               'fontColor': {
                 'red': widget.style?.color?.red,
                 'green': widget.style?.color?.green,

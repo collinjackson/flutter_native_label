@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Flutter Native Label example'),
         ),
         body: ListView.builder(
           padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),

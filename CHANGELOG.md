@@ -1,3 +1,8 @@
+## 0.0.2+1
+
+* Fix fontColor.
+* Update example title.
+
 ## 0.0.2
 
 * Implement copying.
