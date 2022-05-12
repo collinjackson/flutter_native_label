@@ -3,9 +3,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=T95X77SLUMNBY)
 
-Flutter plugin wrapping `UILabel` on iOS. This is a workaround for flutter/flutter#28894.
+Flutter plugin wrapping `UILabel` on iOS. This is a workaround for flutter/flutter#28894, which has been fixed so this plugin is no longer needed -- if you're using it for something else, I'd love to know about it!
 
-Other platforms are not supported.
+<strike>
 
 ## Example Usage
 
@@ -37,3 +37,4 @@ Other platforms are not supported.
 ## Video
 
 https://user-images.githubusercontent.com/394889/167484748-bc01b3dd-fce5-45d1-9d1f-e7521bfd9a4b.mov
+</strike>
