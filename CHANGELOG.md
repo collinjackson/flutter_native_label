@@ -1,3 +1,7 @@
+## 0.0.4
+
+* Implement `fontFamily`.
+
 ## 0.0.3
 
 * Add support for intrinsic width.
