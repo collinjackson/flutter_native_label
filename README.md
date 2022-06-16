@@ -53,5 +53,5 @@ Scaffold(
 
 ## Screenshots
 
-<img width="561" alt="Screen Shot 2022-06-16 at 10 55 08 AM" src="https://user-images.githubusercontent.com/394889/174135381-545ba0b0-c69f-4ce3-8cfb-5e5213cf85f4.png">
+<img width="561" alt="Screen Shot 2022-06-16 at 12 05 33 PM" src="https://user-images.githubusercontent.com/394889/174146328-f201d30c-c855-4784-9dd1-2c6fd2ff8086.png">
 <img width="561" alt="Screen Shot 2022-06-16 at 10 55 11 AM" src="https://user-images.githubusercontent.com/394889/174135392-c40a57f1-3d3a-4334-a9a5-7ddd4cc7ac0b.png">
