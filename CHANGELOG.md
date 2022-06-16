@@ -1,3 +1,8 @@
+## 0.0.3
+
+* Add support for intrinsic width.
+* Update example.
+
 ## 0.0.2+2
 
 * Update README.

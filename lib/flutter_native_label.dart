@@ -71,13 +71,24 @@ class NativeLabel extends StatefulWidget {
 
 class NativeLabelState extends State<NativeLabel> {
   double _contentHeight = 16.0;
+  double _contentWidth = 16.0;
 
   void _createMethodChannel(int nativeViewId) {
     MethodChannel channel = MethodChannel('flutter_native_label$nativeViewId');
-    channel.invokeMethod('getContentHeight').then((value) {
-      if (value != null) {
+    channel.invokeMethod('getContentDimensions').then((result) {
+      double? width = result[0];
+      double? height = result[1];
+      if (!mounted) {
+        return;
+      }
+      if (width != null)   {
         setState(() {
-          _contentHeight = value;
+          _contentWidth = width;
+        });
+      }
+      if (height != null) {
+        setState(() {
+          _contentHeight = height;
         });
       }
     });
@@ -90,6 +101,7 @@ class NativeLabelState extends State<NativeLabel> {
       builder: (context, constraints) => Container(
         decoration: widget.decoration,
         height: _contentHeight,
+        width: _contentWidth,
         child: UiKitView(
           key: ValueKey([textScaleFactor, widget.text].join()),
           viewType: 'flutter_native_label',
