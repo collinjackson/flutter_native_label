@@ -96,8 +96,8 @@
 
 - (CGSize) intrinsicContentSize {
     CGSize intrinsicSuperViewContentSize = [super intrinsicContentSize];
-    intrinsicSuperViewContentSize.height += topInset + bottomInset;
     intrinsicSuperViewContentSize.width += leftInset + rightInset;
+    intrinsicSuperViewContentSize.height += topInset + bottomInset;
     return intrinsicSuperViewContentSize;
 }
 
@@ -118,6 +118,7 @@
     id _Nullable _args;
 
     float _containerWidth;
+    UIEdgeInsets _edgeInsets;
 }
 
 
@@ -194,12 +195,13 @@
         if (args[@"edgeInsetRight"] && ![args[@"edgeInsetRight"] isKindOfClass:[NSNull class]]) {
             edgeInsetRight = [args[@"edgeInsetRight"] floatValue];
         }
-        [_label setContentEdgeInsets:UIEdgeInsetsMake(edgeInsetTop, edgeInsetLeft, edgeInsetBottom, edgeInsetRight)];
+        _edgeInsets = UIEdgeInsetsMake(edgeInsetTop, edgeInsetLeft, edgeInsetBottom, edgeInsetRight);
+        [_label setContentEdgeInsets:_edgeInsets];
 
         _label.attributedText = attributedText;
 
         _containerWidth = [args[@"width"] floatValue];
-        
+
         __weak __typeof__(self) weakSelf = self;
         [_channel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
             [weakSelf onMethodCall:call result:result];
@@ -209,10 +211,16 @@
 }
 
 - (void)onMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-    if ([[call method] isEqualToString:@"getContentHeight"]) {
-        CGSize boundSize = CGSizeMake(_containerWidth, MAXFLOAT);
-        CGSize size = [_label sizeThatFits: boundSize];
-        result([NSNumber numberWithFloat: size.height]);
+    if ([[call method] isEqualToString:@"getContentDimensions"]) {
+        CGSize size = [_label intrinsicContentSize];
+        if (size.width > _containerWidth) {
+            CGSize boundSize = CGSizeMake(_containerWidth -  _edgeInsets.left - _edgeInsets.right, MAXFLOAT);
+            size = [_label sizeThatFits: boundSize];
+            float width = size.width + _edgeInsets.left + _edgeInsets.right;
+            float height = size.height + _edgeInsets.top + _edgeInsets.bottom;
+            size = CGSizeMake(width, height);
+        }
+        result(@[[NSNumber numberWithFloat: size.width], [NSNumber numberWithFloat:size.height]]);
     } else {
         result(FlutterMethodNotImplemented);
     }

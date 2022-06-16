@@ -10,35 +10,48 @@ Flutter plugin wrapping `UILabel`. This is a workaround for
 - flutter/flutter#102484
 - flutter/flutter#101569
 
-Only iOS platform is supported.
+Only iOS is supported.
 
 ## Example Usage
-
 ```dart
-  ListView.builder(
-    padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
-    itemBuilder: (_, index) {
-      return Container(
-        margin: EdgeInsets.all(8.0),
-        child: NativeLabel(
-          '''Demo 👍👍👍👍 👍👍👍👍 Multiline 👍👍👍😊😊😊 👍👍👍 '''
-          '$index ${List.filled(index, '👍').join()}\n',
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15.0),
-          color: Colors.white,
+Scaffold(
+  appBar: AppBar(
+    title: const Text('Infinite list example'),
+  ),
+  body: CustomScrollView(
+    slivers: [
+      SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (_, index) {
+            return Row(
+              children: [
+                Flexible(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: NativeLabel(
+                      "a 👍${List.filled(index, '👍aaa').join()}",
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.0),
+                        color: Colors.green,
+                      ),
+                      edgeInsetLeft: 10.0,
+                      edgeInsetRight: 10.0,
+                      edgeInsetTop: 10.0,
+                      edgeInsetBottom: 10.0,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
         ),
-        edgeInsetTop: 10.0,
-        edgeInsetLeft: 10.0,
-        edgeInsetBottom: 10.0,
-        edgeInsetRight: 10.0,
-        lineSpacing: 20.0,
-        kern: 5.0,
-        copyable: true,
       ),
-    );
-  },
+    ],
+  ),
+);
 ```
 
-## Video
+## Screenshots
 
-https://user-images.githubusercontent.com/394889/167484748-bc01b3dd-fce5-45d1-9d1f-e7521bfd9a4b.mov
+<img width="561" alt="Screen Shot 2022-06-16 at 10 55 08 AM" src="https://user-images.githubusercontent.com/394889/174135381-545ba0b0-c69f-4ce3-8cfb-5e5213cf85f4.png">
+<img width="561" alt="Screen Shot 2022-06-16 at 10 55 11 AM" src="https://user-images.githubusercontent.com/394889/174135392-c40a57f1-3d3a-4334-a9a5-7ddd4cc7ac0b.png">
