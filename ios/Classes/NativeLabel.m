@@ -149,17 +149,13 @@
         if (args[@"fontSize"] && ![args[@"fontSize"] isKindOfClass:[NSNull class]]) {
             fontSize = [args[@"fontSize"] floatValue];
         }
-        NSString *fontFamily = nil;
-        if (args[@"fontFamily"] && ![args[@"fontFamily"] isKindOfClass:[NSNull class]]) {
-            fontFamily = args[@"fontFamily"];
-        }
         if (args[@"textScaleFactor"] && ![args[@"textScaleFactor"] isKindOfClass:[NSNull class]]) {
             textScaleFactor = [args[@"textScaleFactor"] floatValue];
         }
         float fontWeight = [args[@"fontWeight"] floatValue];
         float scaledFontSize = fontSize * textScaleFactor;
-        if (fontFamily) {
-            _label.font = [UIFont fontWithName:fontFamily size:scaledFontSize];
+        if (args[@"fontFamily"] && ![args[@"fontFamily"] isKindOfClass:[NSNull class]]) {
+            _label.font = [UIFont fontWithName:args[@"fontFamily"] size:scaledFontSize];
         } else {
             _label.font = [UIFont systemFontOfSize:scaledFontSize weight:fontWeight];
         }
