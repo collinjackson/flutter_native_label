@@ -77,6 +77,10 @@ class IntrinsicSizeExample extends StatelessWidget {
                     edgeInsetRight: 40.0,
                     edgeInsetTop: 40.0,
                     edgeInsetBottom: 40.0,
+                    style: TextStyle(
+                      fontFamily: 'Noteworthy',
+                      fontSize: 20.0,
+                    ),
                   ),
                 ),
                 SizedBox(width: 40.0),

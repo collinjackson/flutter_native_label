@@ -154,7 +154,11 @@
         }
         float fontWeight = [args[@"fontWeight"] floatValue];
         float scaledFontSize = fontSize * textScaleFactor;
-        _label.font = [UIFont systemFontOfSize:scaledFontSize weight:fontWeight];
+        if (args[@"fontFamily"] && ![args[@"fontFamily"] isKindOfClass:[NSNull class]]) {
+            _label.font = [UIFont fontWithName:args[@"fontFamily"] size:scaledFontSize];
+        } else {
+            _label.font = [UIFont systemFontOfSize:scaledFontSize weight:fontWeight];
+        }
         if (args[@"fontColor"] && ![args[@"fontColor"] isKindOfClass:[NSNull class]]) {
             NSDictionary* fontColor = args[@"fontColor"];
             UIColor *textColor = [UIColor colorWithRed:[fontColor[@"red"] floatValue]/255.0 green:[fontColor[@"green"] floatValue]/255.0 blue:[fontColor[@"blue"] floatValue]/255.0 alpha:[fontColor[@"alpha"] floatValue]/255.0];

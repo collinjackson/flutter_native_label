@@ -12,7 +12,10 @@ class NativeLabel extends StatefulWidget {
 
   /// Sets the style of the text being edited.
   ///
-  /// Only `fontSize`, `fontWeight`, and `color` are supported.
+  /// Only `fontFamily`, `fontSize`, `fontWeight`, and `color` are supported.
+  ///
+  /// When using `fontFamily`, pass a complete font name including weight.
+  /// In this case, `fontWeight` is ignored.
   ///
   /// Default: null
   final TextStyle? style;
@@ -114,6 +117,8 @@ class NativeLabelState extends State<NativeLabel> {
               'fontSize': widget.style!.fontSize,
             if (widget.style != null && widget.style?.fontWeight != null)
               'fontWeight': widget.style!.fontWeight,
+            if (widget.style != null && widget.style?.fontFamily != null)
+              'fontFamily': widget.style!.fontFamily,
             if (widget.style != null && widget.style?.color != null)
               'fontColor': {
                 'red': widget.style?.color?.red,
