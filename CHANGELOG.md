@@ -1,3 +1,7 @@
+## 0.1.0
+
+* Change `fontFamily` to `fontName`.
+
 ## 0.0.4
 
 * Implement `fontFamily`.

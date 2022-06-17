@@ -154,8 +154,8 @@
         }
         float fontWeight = [args[@"fontWeight"] floatValue];
         float scaledFontSize = fontSize * textScaleFactor;
-        if (args[@"fontFamily"] && ![args[@"fontFamily"] isKindOfClass:[NSNull class]]) {
-            _label.font = [UIFont fontWithName:args[@"fontFamily"] size:scaledFontSize];
+        if (args[@"fontName"] && ![args[@"fontName"] isKindOfClass:[NSNull class]]) {
+            _label.font = [UIFont fontWithName:args[@"fontName"] size:scaledFontSize];
         } else {
             _label.font = [UIFont systemFontOfSize:scaledFontSize weight:fontWeight];
         }

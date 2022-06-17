@@ -20,6 +20,13 @@ class NativeLabel extends StatefulWidget {
   /// Default: null
   final TextStyle? style;
 
+  /// Sets the name of the font to be used.
+  ///
+  /// If this is set, the `fontWeight` of [style] is ignored.
+  ///
+  /// Default: null
+  final String? fontName;
+
   /// Sets the spacing between characters of the text.
   ///
   /// Default: null
@@ -117,8 +124,8 @@ class NativeLabelState extends State<NativeLabel> {
               'fontSize': widget.style!.fontSize,
             if (widget.style != null && widget.style?.fontWeight != null)
               'fontWeight': widget.style!.fontWeight,
-            if (widget.style != null && widget.style?.fontFamily != null)
-              'fontFamily': widget.style!.fontFamily,
+            if (widget.style != null && widget.fontName != null)
+              'fontName': widget.fontName,
             if (widget.style != null && widget.style?.color != null)
               'fontColor': {
                 'red': widget.style?.color?.red,
