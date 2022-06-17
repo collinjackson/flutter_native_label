@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(_) {
+  Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
       home: Scaffold(
@@ -18,27 +18,29 @@ class MyApp extends StatelessWidget {
           title: const Text('Flutter Native Label examples'),
         ),
         body: Builder(
-          builder: (context) {
+          builder: (innerContext) {
             return ListView(
               children: [
                 ListTile(
                   title: const Text('Intrinsic size test'),
                   onTap: () {
                     Navigator.push(
-                        context,
+                        innerContext,
                         MaterialPageRoute(
                           builder: (context) => const IntrinsicSizeExample(),
-                        ));
+                        ),
+                    );
                   },
                 ),
                 ListTile(
                   title: const Text('Infinite list test'),
                   onTap: () {
                     Navigator.push(
-                        context,
+                        innerContext,
                         MaterialPageRoute(
                           builder: (context) => const InfiniteListExample(),
-                        ));
+                        ),
+                    );
                   },
                 ),
               ],
@@ -77,20 +79,20 @@ class IntrinsicSizeExample extends StatelessWidget {
                     edgeInsetRight: 40.0,
                     edgeInsetTop: 40.0,
                     edgeInsetBottom: 40.0,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: 'Noteworthy',
                       fontSize: 20.0,
                     ),
                   ),
                 ),
-                SizedBox(width: 40.0),
+                const SizedBox(width: 40.0),
               ],
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                SizedBox(width: 40.0),
+                const SizedBox(width: 40.0),
                 Flexible(
                   child: NativeLabel(
                     'The quick brown fox jumps over the lazy dog',
@@ -106,7 +108,7 @@ class IntrinsicSizeExample extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Row(
               children: [
                 Flexible(
@@ -122,7 +124,7 @@ class IntrinsicSizeExample extends StatelessWidget {
                     edgeInsetBottom: 20.0,
                   ),
                 ),
-                SizedBox(width: 40.0),
+                const SizedBox(width: 40.0),
               ],
             ),
           ],

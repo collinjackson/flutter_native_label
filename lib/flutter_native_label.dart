@@ -72,6 +72,7 @@ class NativeLabel extends StatefulWidget {
       this.edgeInsetLeft = 0.0,
       this.edgeInsetRight = 0.0,
       this.copyable = false,
+      this.fontName,
       Key? key})
       : super(key: key);
 
@@ -91,7 +92,7 @@ class NativeLabelState extends State<NativeLabel> {
       if (!mounted) {
         return;
       }
-      if (width != null)   {
+      if (width != null) {
         setState(() {
           _contentWidth = width;
         });
